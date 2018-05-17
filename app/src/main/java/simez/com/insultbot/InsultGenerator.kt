@@ -13,7 +13,7 @@ class InsultGenerator() {
         ))
     }
 
-    fun pickOne(list: List<String>): String {
+    private fun pickOne(list: List<String>): String {
         return list.shuffled().take(1).first()
     }
 }
