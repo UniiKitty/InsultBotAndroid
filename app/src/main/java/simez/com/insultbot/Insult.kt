@@ -22,9 +22,7 @@ class Insult : AppCompatActivity (), TextToSpeech.OnInitListener {
     }
 
     private fun setupTTS() {
-        tts = TextToSpeech(this, TextToSpeech.OnInitListener() {
-
-        })
+        tts = TextToSpeech(this, TextToSpeech.OnInitListener() {})
     }
 
     private fun setupView() {
@@ -47,7 +45,7 @@ class Insult : AppCompatActivity (), TextToSpeech.OnInitListener {
     }
 
     private fun speakInsult() {
-        tts!!.speak(insultText!!.text.toString(), TextToSpeech.QUEUE_ADD, null, "")
+        tts!!.speak(insultText!!.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
     override fun onInit(status: Int) {
