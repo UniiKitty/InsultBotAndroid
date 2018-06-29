@@ -8,18 +8,18 @@ class InsultGenerator() {
     fun generate(): String {
         return pickOne(listOf(
             "Get ${disease()} and ${die()}${youBlank()}",
-            "I hope ${badThingHappens()}${youBlank()}"
-//            "your \(Relative()) \(Pluralise(Hate())) you\(youBlank())",
-//            "\(YouSmell()) like \(AnimalExcrement())",
-//            "\(YouAre()) \(Article(Noun()))",
-//            "\(YouAre()) \(Article(Adjective())) \(Noun())",
-//            "\(YouAre()) \(Article(Noun())), \(Article(Adjective())) \(Noun())",
-//            "\(YouAre()) \(Article(Noun())), and your \(Relative()) is \(Article(Noun()))",
-//            "\(YouAre()) \(Article(Noun())), and your \(Relative()) is \(Article(Adjective())) \(Noun())",
-//            "\(YouHave()) \(Article(Adjective())) \(SexAnatomy())",
-//            "you \(Walk()) like \(Article(animal()))\(youBlank())",
-//            "\(CertainDay()) you \(DoingSomethingEmbarrassing())\(MaybeWhileFamilyWatches())",
-//            "your \(BodyParts()) are \(Ugly()), your \(BodyPart()) is \(Ugly()), and you smell like \(Article(SmellyNoun()))",
+            "I hope ${badThingHappens()}${youBlank()}",
+            "Your ${relative()} ${pluralise(hate())} you${youBlank()}",
+            "${youSmell()} like ${animalExcrement()}",
+            "${youAre()} ${article(noun())}",
+            "${youAre()} ${article(adjective())} ${noun()}",
+            "${youAre()} ${article(noun())}, ${article(adjective())} ${noun()}",
+            "${youAre()} ${article(noun())}, and your ${relative()} is ${article(noun())}",
+            "${youAre()} ${article(noun())}, and your ${relative()} is ${article(adjective())} ${noun()}",
+            "${youHave()} ${article(adjective())} ${sexAnatomy()}",
+            "you ${walk()} like ${article(animal())}${youBlank()}",
+            "${certainDay()} you ${doingSomethingEmbarrassing()}${maybeWhileFamilyWatches()}",
+            "your ${bodyParts()} are ${ugly()}, your ${bodyPart()} is ${ugly()}, and you smell like ${article(smellyNoun())}"
         )).capitalize().trim() + '.'
     }
 
@@ -72,7 +72,7 @@ class InsultGenerator() {
 
     private fun nounify(text: String): String {
         if (text.endsWith("ate")) {
-            return "${text.dropLast(1)} or";
+            return "${text.dropLast(1)}or";
         }
 
         if (isVowel(text.last())) {
@@ -116,6 +116,14 @@ class InsultGenerator() {
 
     private fun youGet(): String {
         return pickOne(listOf("your ${relative()} gets", "you get"))
+    }
+
+    private fun youAre(): String {
+        return pickOne(listOf("you are", "your ${relative()} is"))
+    }
+
+    private fun youHave(): String {
+        return pickOne(listOf("you have", "your ${relative()} has"))
     }
 
     private fun relative(): String {
@@ -226,6 +234,27 @@ class InsultGenerator() {
         return pickOne(listOf(semen(), urine(), vomit(), "douche", "diarrhea"))
     }
 
+    private fun animalExcrement(): String {
+        return pickOne(listOf(
+            "${animal()} ${excrement()}",
+            "fresh ${animal()} ${excrement()}",
+            "a piece of ${animal()} ${feces()}",
+            "a fresh piece of ${animal()} ${feces()}"
+        ))
+    }
+
+    private fun bodyPart(): String {
+        return pickOne(listOf("face", "nose", "head", "beard", "skin", "hair"))
+    }
+
+    private fun bodyParts(): String {
+        return pickOne(listOf("ears", "eyes", "arms", "legs", "teeth", "lips"))
+    }
+
+    private fun ugly(): String {
+        return pickOne(listOf("atrocious", "vomit inducing", "disgusting", "deformed", "ugly", "gross", "weird"))
+    }
+
     private fun container(): String {
         return pickOne(listOf("bag", "sack", "bucket", "bowl"))
     }
@@ -276,6 +305,10 @@ class InsultGenerator() {
 
     private fun feces(): String {
         return pickOne(listOf("poop", "shit", "turd"))
+    }
+
+    private fun fecesVerb(): String {
+        return pickOne(listOf("poop", "shit"))
     }
 
     private fun semen(): String {
@@ -338,8 +371,60 @@ class InsultGenerator() {
         return pickOne(listOf("dirty", "rusty", "AIDS infected", "filthy", "disgusting"))
     }
 
+    private fun hate(): String {
+        return pickOne(listOf("hate", "despise", "detest", "fucking hate", "resent"))
+    }
+
+    private fun walk(): String {
+        return pickOne(listOf("walk", "smell", "look", "sound", "laugh"))
+    }
+
+    private fun doingSomethingEmbarrassing(): String {
+        return pickOne(listOf(
+            "${fecesVerb()} on ${pluralise(animal())}",
+            "sniff ${article(smellyNoun())}",
+            "bathe in ${article(container())} of ${fluid()}",
+            "drink ${animal()} ${urine()}",
+            "eat ${animal()} ${feces()}",
+            "masturbate to ${animal()} porn"
+        ))
+    }
+
+    private fun maybeWhileFamilyWatches(): String {
+        return pickOne(listOf("", " while your ${relative()} ${watches()}"))
+    }
+
+    private fun watches(): String {
+        return pickOne(listOf("watches", "films it", "masturbates in the corner", "looks on approvingly", "joins in"))
+    }
+
+    private fun certainDay(): String {
+        val onDate = pickOne(listOf(
+            "Mondays",
+            "Tuesdays",
+            "Wednesdays",
+            "Thursdays",
+            "Fridays",
+            "Saturdays",
+            "Sundays",
+            "Christmas",
+            "Christmas Eve",
+            "New Years Eve",
+            "Halloween",
+            "Valentine's Day"
+        ))
+
+        val onceDate = pickOne(listOf("day", "month", "year"))
+
+        return pickOne(listOf("on $onDate", "once a $onceDate"))
+    }
+
     private fun knife(): String {
         return pickOne(listOf("knife", "knife", "pitchfork", "fork", "syringe", "stick"))
+    }
+
+    private fun youSmell(): String {
+        return pickOne(listOf("you smell", "your ${relative()} smells", "your breath smells", "your ${sexAnatomy()} smells"))
     }
 
     private fun badThingHappens(): String {
@@ -364,7 +449,7 @@ class InsultGenerator() {
             "you marry the wrong person",
             "you fall into a ditch",
             "you miss the bus",
-            "you drop and break your iPhone",
+            "you drop and break your phone",
             "you shit your pants",
             "you get ${hiccups()}",
             "you stub your toe",
