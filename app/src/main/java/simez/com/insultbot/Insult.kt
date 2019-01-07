@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.speech.tts.TextToSpeech
+import kotlinx.android.synthetic.main.activity_insult.*
 import org.w3c.dom.Text
 
 class Insult : AppCompatActivity (), TextToSpeech.OnInitListener {
-    private var insultText: TextView? = null
-    private var nextButton: Button? = null
-    private var speakButton: Button? = null
     private var tts: TextToSpeech? = null
     private var generator: InsultGenerator = InsultGenerator()
 
@@ -27,29 +25,21 @@ class Insult : AppCompatActivity (), TextToSpeech.OnInitListener {
 
     private fun setupView() {
         setContentView(R.layout.activity_insult)
-        insultText = findViewById<TextView>(R.id.insult_text)
-        nextButton = findViewById<Button>(R.id.next_button)
-        speakButton = findViewById<Button>(R.id.speak_button)
 
-        nextButton!!.setOnClickListener({
+        next_button.setOnClickListener({
             createInsult()
-        })
-
-        speakButton!!.setOnClickListener({
-            speakInsult()
         })
     }
 
     private fun createInsult() {
-        insultText!!.text = generator.generate()
-    }
-
-    private fun speakInsult() {
-        tts!!.speak(insultText!!.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
+        insult_text.text = generator.generate()
+        if (speak_switch.isChecked) {
+            tts!!.speak(insult_text.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
+        }
     }
 
     override fun onInit(status: Int) {
-
+        // Required function
     }
 
     override fun onDestroy() {

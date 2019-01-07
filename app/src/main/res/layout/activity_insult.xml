@@ -30,28 +30,34 @@
 
     <Button
         android:id="@+id/next_button"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="81dp"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
         android:backgroundTint="@android:color/black"
-        android:text="Next"
+        android:text="Generate"
         android:textColor="@android:color/white"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/speak_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/speak_button"
-        android:layout_width="123dp"
+    <Switch
+        android:id="@+id/speak_switch"
+        android:layout_width="162dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@android:color/black"
-        android:text="Say it!"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginStart="153dp"
+        android:checked="false"
+        android:showText="true"
+        android:textAlignment="center"
+        android:textOff="Speaking: off"
+        android:textOn="Speaking: on"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
