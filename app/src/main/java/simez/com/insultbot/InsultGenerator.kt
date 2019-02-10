@@ -8,9 +8,9 @@ class InsultGenerator() {
     fun generate(): String {
         return pickOne(listOf(
                 "I hope ${goodEvents()}",
-                "You are ${youAre()}",
-                "Your ${your()}",
-                "You are ${youAre()} and your ${your()}",
+                "You are ${insertNiceThing()}",
+                "Your ${anotherNiceThing()}",
+                "You are ${insertNiceThing()} and your ${anotherNiceThing()}",
                 "You ${verb()} ${adjective()} than ${allGoodThings()}",
                 "You have a big dick" /** Just for Simon ;P */
         )).capitalize().trim() + '.'
@@ -30,7 +30,7 @@ class InsultGenerator() {
             return text + " is"
     }
 
-    private fun youAre(): String {
+    private fun insertNiceThing(): String {
         return pickOne(listOf(
                 "${traits()}",
                 "${adjective()} than ${allGoodThings()}",
@@ -38,9 +38,9 @@ class InsultGenerator() {
         ))
     }
 
-    private fun your(): String {
+    private fun anotherNiceThing(): String {
         return pickOne(listOf(
-                "${relative()} is ${youAre()}",
+                "${relative()} is ${insertNiceThing()}",
                 "${isAre(possession())} better than ${allGoodThings()}"
         ))
     }
