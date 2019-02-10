@@ -11,8 +11,8 @@ class InsultGenerator() {
                 "You are ${youAre()}",
                 "Your ${your()}",
                 "You are ${youAre()} and your ${your()}",
-                "You ${verb()} ${adjective()} than ${goodThings()}",
-                "You have a big dick"
+                "You ${verb()} ${adjective()} than ${allGoodThings()}",
+                "You have a big dick" /** Just for Simon ;P */
         )).capitalize().trim() + '.'
     }
 
@@ -20,92 +20,35 @@ class InsultGenerator() {
         return list.shuffled().take(1).first()
     }
 
-/** grammar functions
- *
-    private fun article(text: String): String {
-        if (isVowel(text.toCharArray().first())) {
-            return "an $text"
-        }
-
-        if (text.startsWith("use") || text.startsWith("urin")) {
-            return "a $text"
-        }
-
-        return "a $text"
-    }
-
-    private fun isVowel(char: Char): Boolean {
-        return listOf('a', 'e', 'i', 'o', 'u').contains(char.toLowerCase())
-    }
-
-    private fun ingify(text: String): String {
-        if (isVowel(text.last())) {
-            return "${text.dropLast(1)}ing"
-        }
-
-        if (isVowel(text[text.length - 2]) && isVowel(text[text.length - 3])) {
-            return "${text}ing";
-        }
-
-        if (isVowel(text[text.length - 2])) {
-            return "$text${text.last()}ing"
-        }
-
-        return "${text}ing";
-    }
-
-    private fun pluralise(text: String): String {
-        if (text.endsWith("s")) {
-            return text + "es";
-        }
-        if (text.endsWith("sh")) {
-            return text + "es";
-        }
-
-        return text + "s";
-    }
-
-    private fun nounify(text: String): String {
-        if (text.endsWith("ate")) {
-            return "${text.dropLast(1)}or";
-        }
-
-        if (isVowel(text.last())) {
-            return "${text}r";
-        }
-
-        if (isVowel(text[text.length - 2]) && isVowel(text[text.length - 3])) {
-            return text + "er";
-        }
-
-        if (isVowel(text[text.length - 2])) {
-            return text + text.last() + "er";
-        }
-
-        return "${text}er";
-    }
-*/
     private fun isAre(text:String): String {
+        if (text == "feet") {
+            return text + " are"
+        }
         if (text.endsWith("s")) {
-            return text + " are";
+            return text + " are"
         }
-        else {
-            return text + " is";
-        }
+            return text + " is"
     }
 
     private fun youAre(): String {
         return pickOne(listOf(
                 "${traits()}",
-                "${adjective()} than ${goodThings()}",
-                "${traits()} and you ${verb()} like ${goodThings()}"
+                "${adjective()} than ${allGoodThings()}",
+                "${traits()} and you ${verb()} like ${allGoodThings()}"
         ))
     }
 
     private fun your(): String {
         return pickOne(listOf(
                 "${relative()} is ${youAre()}",
-                "${isAre(possession())} better than ${goodThings()}"
+                "${isAre(possession())} better than ${allGoodThings()}"
+        ))
+    }
+
+    private fun allGoodThings(): String {
+        return pickOne(listOf (
+                "a ${idiomOne()} of ${idiomTwo()}",
+                "${goodThings()}"
         ))
     }
 
@@ -115,7 +58,8 @@ class InsultGenerator() {
                 "cloud",
                 "shower",
                 "meadow",
-                "bed"
+                "bed",
+                "pocketful"
         ))
     }
 
@@ -125,11 +69,13 @@ class InsultGenerator() {
                 "puppies",
                 "icecream",
                 "kittens",
-                "bunnies",
+                "baby bunnies",
                 "newborn puppies",
                 "happiness",
                 "cookies",
-                "unicorns"
+                "unicorns",
+                "carebears",
+                "ducklings"
                 ))
     }
 
@@ -174,7 +120,9 @@ class InsultGenerator() {
                 "talk",
                 "smell",
                 "smile",
-                "laugh"
+                "laugh",
+                "dance",
+                "sing"
         ))
     }
 
@@ -212,10 +160,7 @@ class InsultGenerator() {
                 "unicorns",
                 "kisses from a puppy",
                 "good coffee",
-                "every holiday all at once",
-                "a ${idiomOne()} of ${idiomTwo()}",
-                "a ${idiomOne()} of ${idiomTwo()}",
-                "a ${idiomOne()} of ${idiomTwo()}"
+                "every holiday all at once"
         ))
     }
 
