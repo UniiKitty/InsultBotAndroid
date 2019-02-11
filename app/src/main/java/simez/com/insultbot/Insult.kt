@@ -1,4 +1,4 @@
-package simez.com.insultbot
+package simez.com.complibot
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

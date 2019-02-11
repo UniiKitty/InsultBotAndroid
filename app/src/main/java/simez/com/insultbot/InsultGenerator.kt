@@ -1,4 +1,4 @@
-package simez.com.insultbot
+package simez.com.complibot
 
 class InsultGenerator() {
     init {
